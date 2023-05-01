@@ -1,0 +1,6 @@
+﻿  main.cpp
+H:\자료파일\고려대(세종)\2학년 2학기\윈도우즈프로그래밍및실습\Assignment\Assignment4(Project)\HitBlow\HitBlow\main.cpp(619,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\자료파일\고려대(세종)\2학년 2학기\윈도우즈프로그래밍및실습\Assignment\Assignment4(Project)\HitBlow\HitBlow\main.cpp(748,38): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\자료파일\고려대(세종)\2학년 2학기\윈도우즈프로그래밍및실습\Assignment\Assignment4(Project)\HitBlow\HitBlow\main.cpp(862,47): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+H:\자료파일\고려대(세종)\2학년 2학기\윈도우즈프로그래밍및실습\Assignment\Assignment4(Project)\HitBlow\HitBlow\main.cpp(872,47): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  HitBlow.vcxproj -> H:\자료파일\고려대(세종)\2학년 2학기\윈도우즈프로그래밍및실습\Assignment\Assignment4(Project)\HitBlow\x64\Debug\HitBlow.exe
