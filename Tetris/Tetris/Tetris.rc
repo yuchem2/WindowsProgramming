@@ -1,0 +1,154 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU
+BEGIN
+    POPUP "게임(&G)"
+    BEGIN
+        MENUITEM "시작(&S)\tS",                   IDM_GAME_START
+        MENUITEM "중지(&P)\tP",                   IDM_GAME_PAUSE
+        MENUITEM SEPARATOR
+        MENUITEM "공백 보이기(&E)\tE",               40008
+        MENUITEM "조용히(&Q)\tQ",                  40009
+        MENUITEM SEPARATOR
+        MENUITEM "8*15",                        40010
+        MENUITEM "10*20",                       40011
+        MENUITEM "12*25",                       40012
+        MENUITEM "15*30",                       40013
+        MENUITEM "20*32",                       40014
+        MENUITEM SEPARATOR
+        MENUITEM "종료(&E)\tAlt+F4",              IDM_GAME_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR1 ACCELERATORS
+BEGIN
+    VK_F4,          IDM_GAME_EXIT,          VIRTKEY, ALT, NOINVERT
+    "P",            IDM_GAME_PAUSE,         VIRTKEY, NOINVERT
+    "S",            IDM_GAME_START,         VIRTKEY, NOINVERT
+    "Q",            IDM_GAME_QUIET,         VIRTKEY, NOINVERT
+    "E",            IDM_GAME_VIEWSPACE,     VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "icon1.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "bitmap1.bmp"
+
+IDB_BITMAP2             BITMAP                  "bitmap2.bmp"
+
+IDB_BITMAP3             BITMAP                  "bitmap3.bmp"
+
+IDB_BITMAP4             BITMAP                  "bitmap4.bmp"
+
+IDB_BITMAP5             BITMAP                  "bitmap5.bmp"
+
+IDB_BITMAP6             BITMAP                  "bitmap6.bmp"
+
+IDB_BITMAP7             BITMAP                  "bitmap7.bmp"
+
+IDB_BITMAP8             BITMAP                  "bitmap8.bmp"
+
+IDB_BITMAP9             BITMAP                  "bitmap9.bmp"
+
+IDB_BITMAP10            BITMAP                  "bitmap10.bmp"
+
+IDB_BITMAP11            BITMAP                  "bitmap11.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// WAVE
+//
+
+IDR_WAVE1               WAVE                    "회전.wav"
+
+IDR_WAVE2               WAVE                    "제거.wav"
+
+IDR_WAVE3               WAVE                    "내림.wav"
+
+IDR_WAVE4               WAVE                    "이동.wav"
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
