@@ -13,62 +13,61 @@ LRESULT CALLBACK HelpChildProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK PauseChildProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK EndChildProc(HWND, UINT, WPARAM, LPARAM);
 
-POINT CenterPoint(RECT&);									// RECT ¡ﬂΩ… æÚ±‚
-void InitGameBoard(RECT);									// ∞‘¿”»≠∏È rect √ ±‚»≠
-void InitGameState();										// ∞‘¿” º≥¡§ √ ±‚»≠
-void InitAnswerPin();										// answerPin √ ±‚»≠
-void SetFont(int, BOOL init = FALSE);						// font ∫Øºˆ ºº∆√
-void MakeStartRect(POINT, RECT[]);							// √ ±‚»≠∏È πˆ∆∞ ∏∏µÈ±‚
+POINT CenterPoint(RECT&);						// RECT Ï§ëÏã¨ ÏñªÍ∏∞
+void InitGameBoard(RECT);						// Í≤åÏûÑÌôîÎ©¥ rect Ï¥àÍ∏∞Ìôî
+void InitGameState();							// Í≤åÏûÑ ÏÑ§Ï†ï Ï¥àÍ∏∞Ìôî
+void InitAnswerPin();							// answerPin Ï¥àÍ∏∞Ìôî
+void SetFont(int, BOOL init = FALSE);					// font Î≥ÄÏàò ÏÑ∏ÌåÖ
+void MakeStartRect(POINT, RECT[]);					// Ï¥àÍ∏∞ÌôîÎ©¥ Î≤ÑÌäº ÎßåÎì§Í∏∞
 
-void DrawGame(HDC);											// ∞‘¿”»≠∏È ±◊∏Æ±‚
-void DrawMain(HDC, RECT, RECT[]);							// √ ±‚»≠∏È ±◊∏Æ±‚
-void DrawTitle(HDC, TCHAR[], int, int, int);				// √ ±‚»≠∏È Title ±◊∏Æ±‚
-void DrawStartRect(HDC, RECT[]);							// √ ±‚»≠∏È πˆ∆∞ ±◊∏Æ±‚
-void DrawFocus(HDC, POINT, POINT);							// Focus ±◊∏Æ±‚
-void SetHTriPoint(POINT[], POINT);							// Sett Horizontal TriPoint information
-void SetVTriPoint(POINT[], POINT);							// Sett Vertical TriPoint information
-void DrawPin(HDC, COLORREF, int, int, int);					// Pin ±◊∏Æ±‚
-void DrawBlankPin(HDC, int, int, int);						// Blank Pin ±◊∏Æ±‚
-void DrawRoundRect(HDC, RECT, int, int, COLORREF);			// Round Rect ±◊∏Æ±‚
-void DrawTextRect(HDC, RECT*, TCHAR*, int, UINT);			// Text ±◊∏Æ±‚
+void DrawGame(HDC);							// Í≤åÏûÑÌôîÎ©¥ Í∑∏Î¶¨Í∏∞
+void DrawMain(HDC, RECT, RECT[]);					// Ï¥àÍ∏∞ÌôîÎ©¥ Í∑∏Î¶¨Í∏∞
+void DrawTitle(HDC, TCHAR[], int, int, int);				// Ï¥àÍ∏∞ÌôîÎ©¥ Title Í∑∏Î¶¨Í∏∞
+void DrawStartRect(HDC, RECT[]);					// Ï¥àÍ∏∞ÌôîÎ©¥ Î≤ÑÌäº Í∑∏Î¶¨Í∏∞
+void DrawFocus(HDC, POINT, POINT);					// Focus Í∑∏Î¶¨Í∏∞
+void SetHTriPoint(POINT[], POINT);					// Set Horizontal TriPoint information
+void SetVTriPoint(POINT[], POINT);					// Set Vertical TriPoint information
+void DrawPin(HDC, COLORREF, int, int, int);				// Pin Í∑∏Î¶¨Í∏∞
+void DrawBlankPin(HDC, int, int, int);					// Blank Pin Í∑∏Î¶¨Í∏∞
+void DrawRoundRect(HDC, RECT, int, int, COLORREF);			// Round Rect Í∑∏Î¶¨Í∏∞
+void DrawTextRect(HDC, RECT*, TCHAR*, int, UINT);			// Text Í∑∏Î¶¨Í∏∞
 void DrawTextRect(HDC, RECT*, LPCTSTR, int, UINT);			// DrawTextRect overloading
 
-void SortCheckBoard();										// sort checkBoard
-BOOL IsIn(int[], int, int);									// πËø≠æ»ø° º˝¿⁄∞° ¿÷¥¬¡ˆ ∆«¥‹
-BOOL CheckHitBlow();										// Hit and blow check
+void SortCheckBoard();							// Sort checkBoard
+BOOL IsIn(int[], int, int);						// Î∞∞Ïó¥ÏïàÏóê Ïà´ÏûêÍ∞Ä ÏûàÎäîÏßÄ ÌåêÎã®
+BOOL CheckHitBlow();							// Hit and blow check
 
 HINSTANCE g_hInst;
 HWND hWndMain, hHelpChild, hPauseChild, hEndChild;
 LPCTSTR lpszClass = _T("Hit and Blow");
 
-// pin ¡§∫∏
-COLORREF pinList[MAX_PIN] = { RGB(255, 89, 94), RGB(255, 146, 76), RGB(255, 202, 58),
-							RGB(138, 201, 38), RGB(25, 130, 196), RGB(106, 76, 147) };
+// pin Ï†ïÎ≥¥
+COLORREF pinList[MAX_PIN] = { RGB(255, 89, 94), RGB(255, 146, 76), RGB(255, 202, 58), RGB(138, 201, 38), RGB(25, 130, 196), RGB(106, 76, 147) };
 COLORREF checkPin[] = { RGB(241, 250, 238), RGB(230, 57, 70) };
-enum PINSTATE { INIT, GAME, SELECT, CHECK };		// pin ¡æ∑˘
+enum PINSTATE { INIT, GAME, SELECT, CHECK };				// pin Ï¢ÖÎ•ò
 int pinSize[] = { 70, 30, 50, 15 };					// init, select, pinList, check pin
 
-// ∞‘¿”∆« ¡§∫∏
+// Í≤åÏûÑÌåê Ï†ïÎ≥¥
 int gameBoard[MAX_CHANCE][4] = { {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1},
-								 {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1} };
+				 {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1}, {-1, -1, -1, -1} };
 int checkBoard[MAX_CHANCE][4] = { {0, 0, 0, 0 }, { 0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0},
-								  {0, 0, 0, 0 }, { 0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0} };
+				  {0, 0, 0, 0 }, { 0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0} };
 int answerBoard[4] = { -1, -1, -1, -1 };
-RECT initBoard[3];				// main game boards
+RECT initBoard[3];			// main game boards
 RECT gameBoardRect[8][4];		// each board (chance, hit/blow, pin)
 RECT answerBoardRect;			// answer board
 RECT answerKeyRect;
-POINT gameBoardPin[8][2][4];	// each board (hit/blow, pin) 
-POINT answerPin[4];				// answer pin
+POINT gameBoardPin[8][2][4];		// each board (hit/blow, pin) 
+POINT answerPin[4];			// answer pin
 POINT selectPin[MAX_PIN];		// select board pin
 
-// ∞‘¿” control¿ª ¿ß«— state
-LOGFONT font;	// font ¡§∫∏ ¿˙¿Â«“ ∫Øºˆ
-enum GAMESTATE { START, PLAYING, PAUSE, END, HELP } bGameState;		// «¡∑Œ±◊∑• state
-enum PLAYER { ONE, TWO } bPlayer;					// ∞‘¿” ±∏∫–(1 player, 2 player)
+// Í≤åÏûÑ controlÏùÑ ÏúÑÌïú state
+LOGFONT font;				// font Ï†ïÎ≥¥ Ï†ÄÏû•Ìï† Î≥ÄÏàò
+enum GAMESTATE { START, PLAYING, PAUSE, END, HELP } bGameState;		// ÌîÑÎ°úÍ∑∏Îû® state
+enum PLAYER { ONE, TWO } bPlayer;					// Í≤åÏûÑ Íµ¨Î∂Ñ(1 player, 2 player)
 enum WIN { WIN, PLAYER1, PLAYER2, LOSS } bWin;
-int leftChance;										// ≥≤¿∫ ±‚»∏¿« ºˆ
-int focus[2];										// «ˆ¿Á ∆˜ƒøΩ∫ [0] -> gmaeBoardPin(0-3), [1] -> selectPin(0-5)
+int leftChance;								// ÎÇ®ÏùÄ Í∏∞ÌöåÏùò Ïàò
+int focus[2];								// ÌòÑÏû¨ Ìè¨Ïª§Ïä§ [0] -> gmaeBoardPin(0-3), [1] -> selectPin(0-5)
 
 int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPSTR lpszCmdParam, _In_ int nCmdShow) {
@@ -116,7 +115,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 		10, 10, 1200, 900,
 		NULL, (HMENU)NULL, hInstance, NULL);
 	ShowWindow(hWnd, nCmdShow);
-	hWndMain = hWnd; // hWnd ¡§∫∏µµ ¿¸ø™∫Øºˆø° ¿˙¿Â!
+	hWndMain = hWnd;	 // hWnd Ï†ïÎ≥¥ÎèÑ Ï†ÑÏó≠Î≥ÄÏàòÏóê Ï†ÄÏû•!
 
 	while (GetMessage(&Message, NULL, 0, 0)) {
 		if (!TranslateAccelerator(hWnd, hAccel, &Message)) {
@@ -130,17 +129,17 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam) {
 	HDC hdc;
 	PAINTSTRUCT ps;
-	HWND hDesktopWnd;		// πŸ≈¡»≠∏È «⁄µÈ æÚ±‚
-	RECT deskR;				// πŸ≈¡»≠∏È RECT
+	HWND hDesktopWnd;		// Î∞îÌÉïÌôîÎ©¥ Ìï∏Îì§ ÏñªÍ∏∞
+	RECT deskR;			// Î∞îÌÉïÌôîÎ©¥ RECT
 	POINT p;				
 
-	static HBRUSH hBrush;							// πË∞Ê brush
-	static RECT clientR, startRectList[4];			// startRectList: player1, player2, exit, help
+	static HBRUSH hBrush;				// Î∞∞Í≤Ω brush
+	static RECT clientR, startRectList[4];		// startRectList: player1, player2, exit, help
 	switch (iMessage) {
 	case WM_CREATE:
 		hWndMain = hWnd;
 		hDesktopWnd = GetDesktopWindow();
-		// child window ª˝º∫
+		// child window ÏÉùÏÑ±
 		hHelpChild = CreateWindow(_T("HelpChild"), NULL, WS_CHILD | WS_BORDER, 0, 0, 0, 0,
 			hWnd, (HMENU)0, g_hInst, NULL);
 		hPauseChild = CreateWindow(_T("PauseChild"), NULL, WS_CHILD | WS_BORDER, 0, 0, 0, 0,
@@ -152,15 +151,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		GetClientRect(hWnd, &clientR);
 		GetClientRect(hDesktopWnd, &deskR);
 		p = CenterPoint(deskR);
-		MoveWindow(hWnd, p.x - 600, p.y - 470, 1200, 900, TRUE);	// «ˆ¿Á ƒƒ«ª≈Õ ¿ßƒ°ø° ¡ﬂΩ…¿∏∑Œ ¿©µµøÏ ø≈±Ë
+		MoveWindow(hWnd, p.x - 600, p.y - 470, 1200, 900, TRUE);	// ÌòÑÏû¨ Ïª¥Ìì®ÌÑ∞ ÏúÑÏπòÏóê Ï§ëÏã¨ÏúºÎ°ú ÏúàÎèÑÏö∞ ÏòÆÍπÄ
 		p = CenterPoint(clientR);
 		SetWindowPos(hHelpChild, NULL, p.x - 300, p.y - 350, 600, 700, SWP_NOZORDER);
 		SetWindowPos(hPauseChild, NULL, p.x - 200, p.y - 200, 400, 400, SWP_NOZORDER); 
 		SetWindowPos(hEndChild, NULL, p.x - 400, p.y - 300, 800, 600, SWP_NOZORDER);
 
-		SetFont(50, TRUE);	// font setting
+		SetFont(50, TRUE);		// font setting
 
-		// Game ¡§∫∏ √ ±‚»≠
+		// Game Ï†ïÎ≥¥ Ï¥àÍ∏∞Ìôî
 		bGameState = START;
 		hBrush = CreateSolidBrush(RGB(34, 34, 34));
 		InitGameBoard(clientR);
@@ -168,18 +167,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// ±‚∫ª paint setting
+		// Í∏∞Î≥∏ paint setting
 		FillRect(hdc, &clientR, hBrush);
 		SetTextColor(hdc, RGB(255, 255, 255));
 		SetBkMode(hdc, TRANSPARENT);
 
-		// bGameStateø° µ˚∂Û Paint
+		// bGameStateÏóê Îî∞Îùº Paint
 		switch (bGameState) {
-		case HELP: // √ ±‚»≠∏È
+		case HELP: // Ï¥àÍ∏∞ÌôîÎ©¥
 		case START:
 			DrawMain(hdc, clientR, startRectList);
 			break;
-		case PLAYING: // ∞‘¿” Ω««‡»≠∏È
+		case PLAYING: 			// Í≤åÏûÑ Ïã§ÌñâÌôîÎ©¥
 		case END:
 			DrawGame(hdc);
 			break;
@@ -187,7 +186,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		EndPaint(hWnd, &ps);
 		return 0;
 	case WM_LBUTTONDOWN:
-		// √ ±‚»≠∏Èø°º≠ πˆ∆∞ ≈¨∏Ø CHECK
+		// Ï¥àÍ∏∞ÌôîÎ©¥ÏóêÏÑú Î≤ÑÌäº ÌÅ¥Î¶≠ CHECK
 		if (bGameState == START) {
 			p.x = LOWORD(lParam);
 			p.y = HIWORD(lParam);
@@ -272,7 +271,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
-		case ID_GAME_PLAY1:		// 1 Player
+		case ID_GAME_PLAY1:	// 1 Player
 			if (bGameState == START) {
 				bGameState = PLAYING;
 				bPlayer = ONE;
@@ -280,7 +279,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 				InitGameState();
 			}
 			break;
-		case ID_GAME_PLAY2:		// 2 Player
+		case ID_GAME_PLAY2:	// 2 Player
 			if (bGameState == START) {
 				bGameState = PLAYING;
 				bPlayer = TWO;
@@ -288,7 +287,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 				InitGameState();
 			}
 			break;
-		case ID_GAME_EXIT:		// Exit
+		case ID_GAME_EXIT:	// Exit
 			if (bGameState != HELP && bGameState != PAUSE)
 				DestroyWindow(hWnd);
 			break;
@@ -328,20 +327,20 @@ LRESULT CALLBACK HelpChildProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM l
 	static RECT textRect, exitRect;
 	static TCHAR title[] = _T("Help"), exit[] = _T("Exit(Ctrl+H)"), helpTitle[] = _T("How to Play?");
 	static LPCTSTR helpStr = _T("Predict four arbitrarily set pins!\n")
-		_T("°€ 1 Player: You will be given 8 chances.\n\n")
-		_T("°€ 2 Player: Each player wiil 4 chances.\n\n")
-		_T("°€ Hit: Color+Postion Correct!\n\n")
-		_T("°€ Blow: Only Color Correct!\n\n")
+		_T("‚óã 1 Player: You will be given 8 chances.\n\n")
+		_T("‚óã 2 Player: Each player wiil 4 chances.\n\n")
+		_T("‚óã Hit: Color+Postion Correct!\n\n")
+		_T("‚óã Blow: Only Color Correct!\n\n")
 		_T("When you get 4 Hits, you win the game!\n\n")
 		_T("If you don't get four hits during the opportunity, you lose the game or there's no winner!\n\n")
-		_T("     °⁄°⁄°⁄ Now start the game! Good Luck! °⁄°⁄°⁄");
+		_T("     ‚òÖ‚òÖ‚òÖ Now start the game! Good Luck! ‚òÖ‚òÖ‚òÖ");
 
 	switch (iMessage) {
 	case WM_CREATE:
 		hBrush = CreateSolidBrush(RGB(50, 50, 50));
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// ±‚∫ª setting
+		// Í∏∞Î≥∏ setting
 		GetClientRect(hWnd, &clientR);
 		FillRect(hdc, &clientR, hBrush);
 		p = CenterPoint(clientR);
@@ -352,7 +351,7 @@ LRESULT CALLBACK HelpChildProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM l
 		hPen = CreatePen(PS_DASHDOT, 5, RGB(255, 255, 255));
 		hOldPen = (HPEN)SelectObject(hdc, hPen);
 
-		// title ±◊∏Æ±‚
+		// title Í∑∏Î¶¨Í∏∞
 		p.y -= 340;
 		DrawTitle(hdc, title, p.x, p.y, 70);
 
@@ -365,7 +364,7 @@ LRESULT CALLBACK HelpChildProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM l
 		LineTo(hdc, textRect.right, textRect.top - 8);
 		DrawTextRect(hdc, &textRect, helpStr, 30, DT_LEFT | DT_WORDBREAK);
 
-		// exit button ±◊∏Æ±‚
+		// exit button Í∑∏Î¶¨Í∏∞
 		DrawRoundRect(hdc, exitRect, 20, 20, RGB(100, 143, 139));
 		buffer = exitRect;
 		buffer.top += 10;
@@ -410,7 +409,7 @@ LRESULT CALLBACK PauseChildProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM 
 		return 0;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// ±‚∫ª setting
+		// Í∏∞Î≥∏ setting
 		GetClientRect(hWnd, &clientR);
 		FillRect(hdc, &clientR, hBrush);
 		p = CenterPoint(clientR);
@@ -419,13 +418,13 @@ LRESULT CALLBACK PauseChildProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM 
 		hPen = CreatePen(PS_DASHDOT, 5, RGB(255, 255, 255));
 		hOldPen = (HPEN)SelectObject(hdc, hPen);
 
-		// Title ±◊∏Æ±‚
+		// Title Í∑∏Î¶¨Í∏∞
 		p.y -= 200;
 		DrawTitle(hdc, title, p.x, p.y, 70);
 		MoveToEx(hdc, p.x - 180, p.y+70, NULL);
 		LineTo(hdc, p.x + 180, p.y+70);
 
-		// button ±◊∏Æ±‚
+		// button Í∑∏Î¶¨Í∏∞
 		p.y += 100;
 		for (int i = 0; i < 3; i++) {
 			SetRect(&buttonRect[i], p.x - 120, p.y, p.x + 120, p.y + 70);
@@ -444,7 +443,7 @@ LRESULT CALLBACK PauseChildProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM 
 		if (bGameState == PAUSE) {
 			p.x = LOWORD(lParam);
 			p.y = HIWORD(lParam);
-			if (PtInRect(&buttonRect[0], p)) {		// resume
+			if (PtInRect(&buttonRect[0], p)) {	// resume
 				bGameState = PLAYING;
 				ShowWindow(hPauseChild, SW_HIDE);
 			}
@@ -482,7 +481,7 @@ LRESULT CALLBACK EndChildProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lP
 	case WM_PAINT:
 		Sleep(3000);
 		hdc = BeginPaint(hWnd, &ps);
-		// ±‚∫ª setting
+		// Í∏∞Î≥∏ setting
 		GetClientRect(hWnd, &clientR);
 		FillRect(hdc, &clientR, hBrush);
 		p = CenterPoint(clientR);
@@ -491,17 +490,17 @@ LRESULT CALLBACK EndChildProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lP
 		hPen = CreatePen(PS_DASHDOT, 5, RGB(255, 255, 255));
 		hOldPen = (HPEN)SelectObject(hdc, hPen);
 
-		// Title ±◊∏Æ±‚
+		// Title Í∑∏Î¶¨Í∏∞
 		p.y -= 280;
 		DrawTitle(hdc, title, p.x, p.y, 70);
 		MoveToEx(hdc, p.x - 350, p.y + 70, NULL);
 		LineTo(hdc, p.x + 350, p.y + 70);
 
-		// ∞‘¿” Ω¬∏Æ, ∆–πË ¡§∫∏ √‚∑¬
+		// Í≤åÏûÑ ÏäπÎ¶¨, Ìå®Î∞∞ Ï†ïÎ≥¥ Ï∂úÎ†•
 		p.y += 200;
 		DrawTitle(hdc, winStr[bWin], p.x, p.y, 95);
 
-		// button ±◊∏Æ±‚
+		// button Í∑∏Î¶¨Í∏∞
 		p.y += 250;
 		p.x -= 200;
 		for (int i = 0; i < 2; i++) {
@@ -597,7 +596,7 @@ void InitGameBoard(RECT clientR) {
 	}
 }
 void InitGameState() {
-	// ∞‘¿”∫∏µÂ √ ±‚»≠
+	// Í≤åÏûÑÎ≥¥Îìú Ï¥àÍ∏∞Ìôî
 	for (int i = 0; i < MAX_CHANCE; i++) {
 		for (int j = 0; j < 4; j++) {
 			gameBoard[i][j] = -1;
@@ -605,10 +604,10 @@ void InitGameState() {
 		}
 			
 	}
-	// random pin ª˝º∫
+	// random pin ÏÉùÏÑ±
 	InitAnswerPin();
 
-	// chance π◊ ∆˜ƒøΩ∫ √ ±‚»≠
+	// chance Î∞è Ìè¨Ïª§Ïä§ Ï¥àÍ∏∞Ìôî
 	leftChance = MAX_CHANCE;
 	focus[0] = focus[1] = 0;
 }
@@ -622,7 +621,7 @@ void InitAnswerPin() {
 		answerBoard[i] = randNum;
 		check[randNum]++;
 
-		// ¡ﬂ∫π check, ø¿¡˜ «œ≥™¿« caseø° ¥Î«ÿº≠∏∏ ¡ﬂ∫π «„øÎ
+		// Ï§ëÎ≥µ check, Ïò§ÏßÅ ÌïòÎÇòÏùò caseÏóê ÎåÄÌï¥ÏÑúÎßå Ï§ëÎ≥µ ÌóàÏö©
 		if (check[randNum] == 2) {
 			if (bTwice == TRUE) {
 				do {
@@ -664,7 +663,7 @@ void MakeStartRect(POINT mPoint, RECT rect[]) {
 void DrawGame(HDC hdc) {
 	TCHAR chanceNum[][2] = { _T("1"), _T("2"), _T("3"), _T("4"), _T("5"), _T("6"), _T("7"), _T("8") };
 	TCHAR enter[] = _T("Enter"), playerText[][4] = {_T("P1"), _T("P2")};
-	TCHAR helpStr[] = _T("Hit(Red): Color+Position   Blow(White): Color  Move: °„(w) °Â(s) ¢∏(a) ¢∫(d)");
+	TCHAR helpStr[] = _T("Hit(Red): Color+Position   Blow(White): Color  Move: ‚ñ≤(w) ‚ñº(s) ‚óÄ(a) ‚ñ∂(d)");
 	RECT strR, buffer;
 
 	// Draw Background
@@ -723,20 +722,20 @@ void DrawMain(HDC hdc, RECT clientR, RECT rect[]) {
 	mPoint = CenterPoint(clientR);
 	mPoint.y -= 350;
 
-	// PtlnRect check«“ Rect √ ±‚»≠
+	// PtlnRect checkÌï† Rect Ï¥àÍ∏∞Ìôî
 	MakeStartRect(mPoint, rect);
-	// Help πˆ∆∞¿ª ¿ß«— Rect ∏∏µÈ±‚
+	// Help Î≤ÑÌäºÏùÑ ÏúÑÌïú Rect ÎßåÎì§Í∏∞
 	SetRect(&rect[3], clientR.right - 100, clientR.top + 10, clientR.right - 10, clientR.top + 50);
-	// Hit and Blow ±€ææ æ≤±‚
+	// Hit and Blow Í∏ÄÏî® Ïì∞Í∏∞
 	DrawTitle(hdc, (TCHAR*)lpszClass, mPoint.x, mPoint.y, 150);
 	mPoint.y += 300;
 	mPoint.x -= 2 * pinSize[INIT];
-	// Main »≠∏È ±◊∏Æ±‚
+	// Main ÌôîÎ©¥ Í∑∏Î¶¨Í∏∞
 	for (i = 0; i < MAX_PIN / 2; i++)
 		DrawPin(hdc, pinList[i], mPoint.x + i * 2 * pinSize[INIT], mPoint.y, pinSize[INIT]);
 	for (; i < MAX_PIN; i++)
 		DrawPin(hdc, pinList[i], mPoint.x + (i - 3) * 2 * pinSize[INIT], mPoint.y + 2 * pinSize[INIT], pinSize[INIT]);
-	// PtlnRect check«“ Rect±◊∏Æ±‚
+	// PtlnRect checkÌï† RectÍ∑∏Î¶¨Í∏∞
 	DrawStartRect(hdc, rect);
 }
 void DrawTitle(HDC hdc, TCHAR str[], int x, int y, int size) {
@@ -830,7 +829,7 @@ void DrawPin(HDC hdc, COLORREF pin, int x, int y, int size) {
 	hOldPen = (HPEN)SelectObject(hdc, hPen);
 	hBrush = CreateSolidBrush(pin);
 
-	// Ω«¡¶ ø¯ ±◊∏Æ±‚
+	// Ïã§Ï†ú Ïõê Í∑∏Î¶¨Í∏∞
 	hOldBrush = (HBRUSH)SelectObject(hdc, hBrush);
 	Ellipse(hdc, x - size, y - size, x + size, y + size);
 
@@ -907,7 +906,7 @@ BOOL CheckHitBlow() {
 
 	// find blow
 	for (i = 0; i < 4; i++) {
-		if (hitBlow[i] == -1) {	// hit∞° æ∆¥— pin∏∏ √º≈©
+		if (hitBlow[i] == -1) {	// hitÍ∞Ä ÏïÑÎãå pinÎßå Ï≤¥ÌÅ¨
 			j = (i + 1) % 4;
 			while (j != i) {
 				if (!IsIn(hitBlow, j, 4) && gameBoard[MAX_CHANCE - leftChance][i] == answerBoard[j]) {
@@ -920,7 +919,7 @@ BOOL CheckHitBlow() {
 		}
 	}
 
-	// checkBoardø° hit, blow ¡§∫∏ ≥ª∏≤¬˜º¯¿∏∑Œ ±‚∑œ
+	// checkBoardÏóê hit, blow Ï†ïÎ≥¥ ÎÇ¥Î¶ºÏ∞®ÏàúÏúºÎ°ú Í∏∞Î°ù
 	for (i = 0; i < 4; i++) {
 		if (hitBlow[i] == -1)
 			checkBoard[MAX_CHANCE - leftChance][i] = 0;		// no
@@ -931,8 +930,8 @@ BOOL CheckHitBlow() {
 	}
 	SortCheckBoard();
 
-	// ∏¬√∆¿ª ∞ÊøÏ Ω¬¿⁄ ∆«¥‹
-	if (checkBoard[MAX_CHANCE - leftChance][3] == 2) { // ¡§¥‰ ∏¬√„
+	// ÎßûÏ≥§ÏùÑ Í≤ΩÏö∞ ÏäπÏûê ÌåêÎã®
+	if (checkBoard[MAX_CHANCE - leftChance][3] == 2) { // Ï†ïÎãµ ÎßûÏ∂§
 		if (bPlayer == ONE)
 			bWin = WIN;
 		else {
@@ -943,7 +942,7 @@ BOOL CheckHitBlow() {
 		}
 		return TRUE;
 	}
-	else {												// ¡§¥‰ ∏¬√ﬂ¡ˆ ∏¯«‘
+	else {	// Ï†ïÎãµ ÎßûÏ∂îÏßÄ Î™ªÌï®
 		leftChance--;
 		focus[0] = focus[1] = 0;
 		return FALSE;
